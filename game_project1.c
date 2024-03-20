@@ -3,8 +3,8 @@
 #include <time.h>
 #include <string.h>
 
-#define ROWS 2
-#define COLS 2
+#define ROWS 4
+#define COLS 4
 #define CARD_ROWS 7
 #define CARD_COLS 20
 #define NUM_PAIRS 2
