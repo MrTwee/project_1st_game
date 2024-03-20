@@ -25,11 +25,11 @@ void shuffle(char Pair_game_table[][CARD_ROWS][CARD_COLS], int rows, int cols) {
     }
 }
 
-void printMatrix(char Pair_game_table[][CARD_ROWS][CARD_COLS], int rows, int cols) {
-    for (int i = 0; i < rows; i++) {
+void printMatrix(char Pair_game_table[][CARD_ROWS][CARD_COLS], int total_cards, int rows, int cols) {
+    for (int i = 0; i < total_cards; i++) {
         for (int k = 0; k < CARD_ROWS; k++) {
             for (int j = 0; j < cols; j++) {
-                printf("%s", Pair_game_table[i][j][k]);
+                printf("%c", Pair_game_table[i / cols][i % cols][k]);
             }
             printf("\n");
         }
@@ -42,32 +42,31 @@ int main(void) {
     printf("Enter number of rows and columns for the game matrix: ");
     scanf("%d %d", &rows, &cols);
 
-    int num_pairs = rows * cols / 2;
+    int total_cards = rows * cols;
+    int num_pairs = total_cards / 2;
 
-    char Pair_game_table[rows][cols][CARD_ROWS][CARD_COLS];
+    char Pair_game_table[total_cards][CARD_ROWS][CARD_COLS];
 
     // Initialize game matrix
     for (int i = 0; i < num_pairs; i++) {
-        sprintf(Pair_game_table[i][0][0], "|-------|");
-        sprintf(Pair_game_table[i][0][1], "|/   \\ |");
-        sprintf(Pair_game_table[i][0][2], "|(0  0) |");
-        sprintf(Pair_game_table[i][0][3], "|> ^ <  |");
-        sprintf(Pair_game_table[i][0][4], "|-------|");
+        sprintf(Pair_game_table[i][0], "|-------|");
+        sprintf(Pair_game_table[i][1], "|/   \\ |");
+        sprintf(Pair_game_table[i][2], "|(0  0) |");
+        sprintf(Pair_game_table[i][3], "|> ^ <  |");
+        sprintf(Pair_game_table[i][4], "|-------|");
 
-        sprintf(Pair_game_table[i][1][0], "|-------|");
-        sprintf(Pair_game_table[i][1][1], " | /\\_/\\ |");
-        sprintf(Pair_game_table[i][1][2], "|( o.o )|");
-        sprintf(Pair_game_table[i][1][3], "| > ^ < |");
-        sprintf(Pair_game_table[i][1][4], "|-------|");
-
-        // Copy each pair of cards
-        memcpy(Pair_game_table[num_pairs + i], Pair_game_table[i], sizeof(char) * CARD_ROWS * CARD_COLS * 2);
+        sprintf(Pair_game_table[num_pairs + i][0], "|-------|");
+        sprintf(Pair_game_table[num_pairs + i][1], " | /\\_/\\ |");
+        sprintf(Pair_game_table[num_pairs + i][2], "|( o.o )|");
+        sprintf(Pair_game_table[num_pairs + i][3], "| > ^ < |");
+        sprintf(Pair_game_table[num_pairs + i][4], "|-------|");
     }
 
     shuffle(Pair_game_table, rows, cols);
 
     // Print shuffled matrix
-    printMatrix(Pair_game_table, rows, cols);
+    char (*subarray)[CARD_ROWS][CARD_COLS] = &Pair_game_table[0];
+    printMatrix(subarray, total_cards, rows, cols);
 
     return 0;
 }
