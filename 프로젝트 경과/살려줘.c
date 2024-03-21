@@ -259,14 +259,7 @@ void initializeBoard(int boardSize) {
 }
 
 void play_game() {
-    printf("\033[2J\033[H"); // 화면 지우기 및 커서 이동
-    printf("게임을 시작합니다...\n\n");
 
-    // 게임 보드 초기화 및 카드 배치
-    initializeBoard(MAX_BOARD);
-
-    // 게임 로직 구현 (사용자 입력 받기, 선택된 카드 비교 등)
-    // ...
 }
 
 
