@@ -223,50 +223,57 @@ void shuffleCards(int *array, int size) {
 
 void initializeBoard(int boardSize) {
     int board[MAX_BOARD][MAX_BOARD] = {0};
-    int cardIndexes[MAX_IMAGES]; // 이 배열은 사용 가능한 카드 인덱스를 저장합니다.
+    int cardIndexes[MAX_IMAGES / 2]; // 보드 크기의 절반만큼만 필요합니다.
+    int placedCards = 0; // 배치된 카드 수
 
     // 각 카드 인덱스를 초기화
-    for (int i = 0; i < MAX_IMAGES; i++) {
+    for (int i = 0; i < MAX_IMAGES / 2; i++) {
         cardIndexes[i] = i;
     }
 
-    // 카드 인덱스를 셔플
-    shuffleCards(cardIndexes, MAX_IMAGES);
-
-    // 보드에 카드 배치
-    int cardCount = 0;
+    // 보드 초기화
     for (int i = 0; i < boardSize; i++) {
-        for (int j = 0; j < boardSize; j += 2) {
-            // 같은 카드를 2개씩 배치
-            board[i][j] = board[i][j + 1] = cardIndexes[cardCount++];
-            if (cardCount >= boardSize * boardSize / 2) {
-                // 필요한 카드 수에 도달하면 중단
-                break;
-            }
-        }
-        if (cardCount >= boardSize * boardSize / 2) {
-            break;
+        for (int j = 0; j < boardSize; j++) {
+            board[i][j] = -1; // 초기값 설정
         }
     }
 
-    // 카드 출력
+    while (placedCards < boardSize * boardSize) {
+        for (int i = 0; i < MAX_IMAGES / 2; i++) {
+            for (int repeat = 0; repeat < 2; repeat++) { // 각 카드를 두 번 배치합니다.
+                int x, y;
+                do {
+                    x = rand() % boardSize;
+                    y = rand() % boardSize;
+                } while (board[x][y] != -1); // 빈 위치를 찾을 때까지 반복
+
+                board[x][y] = cardIndexes[i];
+                placedCards++;
+            }
+        }
+    }
+
+    // 카드 출력 (디버깅 목적)
     for (int i = 0; i < boardSize; i++) {
         for (int j = 0; j < boardSize; j++) {
-            printf("%s ", images[board[i][j]]);
+            printf("%d ", board[i][j]);
         }
         printf("\n");
     }
 }
 
+
 void play_game() {
-    printf("\033[2J\033[H"); // 화면 지우기 및 커서 이동
-    printf("게임을 시작합니다...\n\n");
+    printf("\033[2J\033[H"); // 화면 지우기
+    printf("게임 시작!\n");
 
-    // 게임 보드 초기화 및 카드 배치
-    initializeBoard(MAX_BOARD);
 
-    // 게임 로직 구현 (사용자 입력 받기, 선택된 카드 비교 등)
-    // ...
+    int boardSize = 6;
+    initializeBoard(boardSize);
+
+    sleep(3);
+    // 추가적인 게임 로직 구현이 필요합니다.
+    // 예: 사용자 입력을 받아 카드를 선택하고, 매칭이 되는지 확인하는 로직 등
 }
 
 

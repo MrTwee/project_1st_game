@@ -259,7 +259,16 @@ void initializeBoard(int boardSize) {
 }
 
 void play_game() {
+    printf("\033[2J\033[H"); // 화면 지우기
+    printf("게임 시작!\n");
 
+
+    int boardSize = 6;
+    initializeBoard(boardSize);
+
+    sleep(3);
+    // 추가적인 게임 로직 구현이 필요합니다.
+    // 예: 사용자 입력을 받아 카드를 선택하고, 매칭이 되는지 확인하는 로직 등
 }
 
 
