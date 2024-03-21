@@ -223,7 +223,7 @@ void shuffleCards(int *array, int size) {
 
 void initializeBoard(int boardSize) {
     int board[MAX_BOARD][MAX_BOARD] = {0};
-    int cardIndexes[MAX_IMAGES / 2]; // 보드 크기의 절반만큼만 필요합니다.
+    int cardIndexes[MAX_IMAGES / 2]; // 보드 크기의 절반만큼만 필요
     int placedCards = 0; // 배치된 카드 수
 
     // 각 카드 인덱스를 초기화
@@ -240,7 +240,7 @@ void initializeBoard(int boardSize) {
 
     while (placedCards < boardSize * boardSize) {
         for (int i = 0; i < MAX_IMAGES / 2; i++) {
-            for (int repeat = 0; repeat < 2; repeat++) { // 각 카드를 두 번 배치합니다.
+            for (int repeat = 0; repeat < 2; repeat++) { // 각 카드를 두 번 배치
                 int x, y;
                 do {
                     x = rand() % boardSize;
@@ -272,8 +272,8 @@ void play_game() {
     initializeBoard(boardSize);
 
     sleep(3);
-    // 추가적인 게임 로직 구현이 필요합니다.
-    // 예: 사용자 입력을 받아 카드를 선택하고, 매칭이 되는지 확인하는 로직 등
+    // 추가적인 게임 로직 구현이 필요
+    // 사용자 입력을 받아 카드를 선택하고, 매칭이 되는지 확인하는 로직
 }
 
 
@@ -293,7 +293,7 @@ int main() {
                 break;
             case 3:
                 display_credits();
-                // 크레딧 보여주고 메뉴로 돌아가야 하므로, 여기에 display_menu()를 호출하지 않음.
+                // 크레딧 보여주고 메뉴로 돌아가야 하므로, 여기에 display_menu()를 호출하지 않음
                 break;
             case 4:
                 printf("\033[2J\033[H");
