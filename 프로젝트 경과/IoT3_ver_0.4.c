@@ -415,3 +415,41 @@ int main() {
 
 
 }
+/*
+#include <stdio.h>
+#include <unistd.h>
+
+// 크레딧 텍스트 배열
+char *credits[] = {
+    "Sola HONG    Data Manager",
+    "Haedeun SONG    Production Assistant",
+    "Jinwoo LEE    Producer & Director",
+    "Hyunjoong YOON    Director",
+    "Present By Team IoT3...Thank you..."
+};
+
+// 크레딧 텍스트 배열의 크기
+int num_credits = sizeof(credits) / sizeof(credits[0]);
+
+// 크레딧을 화면에 출력하고, 화면을 위로 스크롤하는 함수
+void scroll_credits() {
+    int i, j;
+    for (i = 0; i <= num_credits; i++) {
+        printf("\033[2J\033[H"); // Clear screen
+        // 각 크레딧 텍스트를 출력할 때마다 이전 크레딧들을 출력하여 스크롤 효과를 구현
+        for (j = i - 1; j >= 0; j--) {
+            printf("%s\n", credits[j]);
+        }
+        // 마지막 크레딧은 위로 이동하며 출력
+        if (i < num_credits) {
+            printf("%s\n", credits[i]);
+        }
+        // 0.5초 동안 대기
+        usleep(500000);
+    }
+}
+
+int main() {
+    scroll_credits();
+    return 0;
+}*/
