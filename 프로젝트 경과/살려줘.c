@@ -223,7 +223,7 @@ void shuffleCards(int *array, int size) {
 
 void initializeBoard(int boardSize) {
     int board[MAX_BOARD][MAX_BOARD] = {0};
-    int cardIndexes[MAX_IMAGES]; // 이 배열은 사용 가능한 카드 인덱스를 저장합니다.
+    int cardIndexes[MAX_IMAGES]; // 이 배열은 사용 가능한 카드 인덱스를 저장
 
     // 각 카드 인덱스를 초기화
     for (int i = 0; i < MAX_IMAGES; i++) {
