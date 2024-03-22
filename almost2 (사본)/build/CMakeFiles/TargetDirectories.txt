@@ -1,0 +1,3 @@
+/home/kukusu/Downloads/project_1st_game-main/almost2/build/CMakeFiles/MyGame.dir
+/home/kukusu/Downloads/project_1st_game-main/almost2/build/CMakeFiles/edit_cache.dir
+/home/kukusu/Downloads/project_1st_game-main/almost2/build/CMakeFiles/rebuild_cache.dir
