@@ -111,6 +111,7 @@ void initializeBoard() {
 
 // 게임 보드 출력 로직
 void printBoard(int cursorPosition) {
+    printf("Score: %d\n", score);
     for (int i = 0; i < BOARD_SIZE; ++i) {
         for (int j = 0; j < BOARD_SIZE; ++j) {
             int cardIndex = i * BOARD_SIZE + j;
@@ -130,16 +131,16 @@ void printBoard(int cursorPosition) {
 
                         }
                  } else if (cardIndex == cursorPosition && k == 0) { // 커서 위치의 첫 번째 라인에만 선택 표시
-                     printf("     선택됨      ");
-                // } else {
-                //     printf("|                 "); // 공개되지 않은 카드
-                // }
-                } else{
-                        for (int m = 0; m < IMG_WIDTH+1; m++){
-                            printf("%c", images[board[cardIndex]][k][m]);
-
-                        }
+                     printf("|     선택됨      ");
+                } else {
+                    printf("|                "); // 공개되지 않은 카드
                 }
+                // } else{
+                //         for (int m = 0; m < IMG_WIDTH+1; m++){
+                //             printf("%c", images[board[cardIndex]][k][m]);
+
+                //         }
+                // }
             }
             printf("|\n");
         }

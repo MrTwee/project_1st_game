@@ -22,6 +22,8 @@ int display_menu() {
 }
 
 int main() {
+
+    srand(time(NULL));
     int choice;
 
     while (1) {
