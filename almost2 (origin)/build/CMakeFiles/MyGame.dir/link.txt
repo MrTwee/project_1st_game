@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/MyGame.dir/main.c.o CMakeFiles/MyGame.dir/game.c.o CMakeFiles/MyGame.dir/utility.c.o -o MyGame 
